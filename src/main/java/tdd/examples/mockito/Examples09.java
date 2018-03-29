@@ -20,11 +20,11 @@ public class Examples09 {
     @Test
     public void test1() {
 // chaining
-        when(mock.someMethod(anyString()))
-                .thenReturn("foo")
-                .thenReturn("bar")
-                .thenThrow(new RuntimeException());
-
+        when(mock.someMethod(anyString())) // 아무 문자열 값을 넘겨주고 실행하면,
+                .thenReturn("foo") // 첫번재 실행면 foo 리턴
+                .thenReturn("bar") // 두번째 실행되면 bar 리턴
+                .thenThrow(new RuntimeException()); // 세번째 실행되면 익셉션
+        
         System.out.println(mock.someMethod("some arg")); // foo
         System.out.println(mock.someMethod("some arg")); // bar
 //        System.out.println(mock.someMethod("some arg")); // Runtime Exception
@@ -37,6 +37,7 @@ public class Examples09 {
                 .thenReturn("one", "two");
 
         System.out.println(mock.someMethod("some arg")); // one
+        System.out.println(mock.someMethod("some arg")); // two
         System.out.println(mock.someMethod("some arg")); // two
         System.out.println(mock.someMethod("some arg")); // two - 마지막 stub한 값으로 고정
     }

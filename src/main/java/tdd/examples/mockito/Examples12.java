@@ -15,13 +15,16 @@ public class Examples12 {
         when(mock.addAll(argThat(new ListOfTwoElements()))).thenReturn(true);
 
         mock.addAll(Arrays.asList("one", "two")); // true
+//        mock.addAll(Arrays.asList("one", "two", "three")); // error
 
         verify(mock).addAll(argThat(new ListOfTwoElements()));
     }
 }
 
-
-class ListOfTwoElements extends ArgumentMatcher<List> {
+/**
+ * 파라미터의 값을 검증하기 위해 구현.
+ */
+class ListOfTwoElements extends ArgumentMatcher<List> { // 파라미터에 들어갈 타입을 제네릭에 써준다.
     @Override
     public boolean matches(Object argument) {
         List list = (List)argument;

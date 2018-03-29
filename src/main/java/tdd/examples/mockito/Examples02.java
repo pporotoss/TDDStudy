@@ -10,10 +10,10 @@ import static org.mockito.Mockito.verify;
 // Mocking과 Verification
 public class Examples02 {
     public static void main(String[] args) {
-        // 클래스 뿐만이 아니라 인터페이스도 mock 할 수 있다.
+        // 인터페이스 뿐만이 아니라 클래스도 mock 할 수 있다.
         LinkedList mockedList = mock(LinkedList.class);
 
-        // stubbing
+        // stubbing -- 생성한 목 객체를 테스트하기 알맞게 설정한다.
         when(mockedList.get(0)).thenReturn("first");
         when(mockedList.get(1)).thenThrow(new RuntimeException());
 

@@ -21,7 +21,7 @@ public class Examples13 {
         mock.addAll(Arrays.asList("one", "two"));  // false
 
         ArgumentCaptor<List> argument = ArgumentCaptor.forClass(List.class);
-        verify(mock).addAll(argument.capture());
+        verify(mock).addAll(argument.capture()); //
         Assert.assertTrue(argument.getValue().size() == 2);
     }
 }

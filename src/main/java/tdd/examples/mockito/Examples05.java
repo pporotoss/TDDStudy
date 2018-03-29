@@ -9,7 +9,7 @@ public class Examples05 {
     public static void main(String[] args) {
         LinkedList mockedList = mock(LinkedList.class);
 
-        doThrow(new RuntimeException()).when(mockedList).clear();
+        doThrow(new RuntimeException()).when(mockedList).clear(); // 가짜객체의 clear() 메서드가 호출되면 익셉션 발생
 
         mockedList.clear(); // RuntimeException
     }

@@ -23,16 +23,31 @@ public class Examples10 {
 
     @Test
     public void test() {
-
-        when(mockedList.get(anyInt())).thenAnswer(new Answer<Integer>() {
-            public Integer answer(InvocationOnMock invocation) {
-                Object[] args = invocation.getArguments(); // arguments
-                List mock = (List)invocation.getMock(); // mock itself
-                int result = (Integer)args[0] + 1;
-                return result;
-            }
+    
+//        when(mockedList.get(anyInt())).thenAnswer(new Answer<Integer>() {
+//
+//            public Integer answer(InvocationOnMock invocation) {
+//                Object[] args = invocation.getArguments(); // arguments
+//                List mock = (List) invocation.getMock(); // mock itself
+//                int result = (Integer) args[0] + 1;
+//                return result;
+//            }
+//
+//        });
+    
+        when(mockedList.get(anyInt())).thenAnswer((invocation) -> {
+            Object[] args = invocation.getArguments(); // arguments
+            List mock = (List) invocation.getMock(); // mock itself
+            int result = (Integer) args[0] + 1;
+            return result;
         });
+        
+        
+        when(mockedList.size()).thenAnswer((invocation) -> (int) Math.round(Math.random() * 10));
 
         System.out.println(mockedList.get(1)); // called with argument: 2
+    
+        System.out.println(mockedList.size());
+        
     }
 }
